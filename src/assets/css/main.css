@@ -1,0 +1,255 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+[data-animate="fade-up"] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+  will-change: opacity, transform;
+}
+
+[data-animate="fade-up"].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* animation css  */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+
+/* Header CSS  */
+
+.menu_desktop li a 
+{
+    font-size: 18px;
+}
+
+
+/* Footer cSS  */
+
+footer h2 
+{
+    color: #55DD06 !important;
+    font-size: 22px !important;
+}
+
+.footer_top_section 
+{
+    padding-bottom: 60px;
+}
+.footer_btm 
+{
+    background-color: #070707 !important;
+}
+.social_media img 
+{
+    height: 24px
+}
+
+
+/* Hero banner section  */
+
+
+.hero_section{
+    background-size: contain;
+}
+
+.hero_section h1 
+{
+    font-size: 52px;
+    line-height: 66px;
+}
+.hero_section h1 span 
+{
+    /* color: #55DD06; */
+}
+.request_demo_btn 
+{
+    background-color: #007B37 !important;
+    border: 1px solid #00FF88;
+}
+.request_demo_btn:hover{
+    background-color: #007b37b9 !important;
+}
+
+
+
+/* logo slider CSS  */
+
+.slider {
+  overflow: hidden;
+  position: relative;
+}
+
+.slide-track-left {
+  display: flex;
+  width: max-content;
+  animation: scrollLeft 20s linear infinite;
+}
+
+.slide-track-right {
+  display: flex;
+  width: max-content;
+  animation: scrollRight 20s linear infinite;
+}
+
+/* Animations */
+@keyframes scrollLeft {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes scrollRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.slider:hover .slide-track-left,
+.slider:hover .slide-track-right {
+  animation-play-state: paused;
+}
+
+
+
+/* problem fix section  */
+
+.problem_wefix_sec 
+{
+    background-image: linear-gradient(to bottom, #B7E4C7, #FFFFFF);
+}
+.flip-card {
+          perspective: 1000px;
+          cursor: pointer;
+        }
+
+        .flip-card-inner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          text-align: left;
+          transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+          transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+          transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          display: flex;
+          align-items: center;
+        }
+
+        .flip-card-back {
+          transform: rotateY(180deg);
+        }
+
+
+/* UOM Flow section  */
+        
+.uom_flow_section 
+{
+    background-color: #0F5045;
+    color: white;
+}
+.uom_flow_section h2 
+{
+    color: #07F170;
+    font-size: 50px;
+    line-height: 62px;
+    font-weight: 700;
+}
+.uom_flow_section .flow_cards h3
+{
+  font-size: 26px;
+  
+}
+.uom_flow_section .flow_cards p 
+{
+    font-size: 15px;
+}
+
+
+/* mobile flow section  */
+
+.bmobile_flow_sec h2 
+{
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 500;
+}
+.bmobile_flow_sec p.sub_title {
+  font-weight: 500 !important;
+}
+
+.bmobile_flow_sec span 
+{
+  font-weight: 400 !important;
+}
+
+
+.day_one_benefits_sec 
+{
+  background-image: linear-gradient(to bottom, #C3EAFF, #FFFFFF);
+}
+
+
+
+/* Media Querries 960px Maxwidth */
+
+@media screen and (max-width:960px) {
+    .bmobile_flow_sec h2 {
+      font-size: 25px;
+      line-height: 32px;
+    }
+}
+
+
+/* Media Querries 768px Maxwidth */
+
+
+@media screen and (max-width:960px) {
+    .bmobile_flow_sec h2 {
+      font-size: 18px;
+      line-height: 28px;
+    }
+    .bmobile_flow_sec p.sub_title {
+        font-size: 14px !important;
+    }
+
+}
