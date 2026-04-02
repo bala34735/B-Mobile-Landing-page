@@ -1,255 +1,342 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-    font-family: 'Inter', sans-serif;
+
+/* ------------------------------------------------------ 
+    TABLE OF CONTENT
+---------------------------------------------------------
+01. General CSS
+02. Animation CSS
+03. Header CSS
+04. Footer CSS
+05. Hero banner section CSS
+06. logo slider CSS
+07. problem fix section CSS
+08. UOM Flow section CSS
+09. Bmobile flow section CSS
+10. Dayone benefits section CSS
+11. Media Querries 960px Maxwidth CSS
+12. Media Querries 768px Maxwidth CSS
+
+--------------------------------------------------------*/
+
+/* -----------------------------------
+   01. General CSS
+-------------------------------------*/
+
+:root {
+	--primary-color: #007B37;
+	--secondary-color: #00FF88;
+	--third-color: #23AE31;
+	--color-mild-green: #07F170;
+	--color-green-dark: #0F5045;
+	--bullets-color: #0AC279;
+	--color-white: #ffffff;
+	--primary-font: 'Inter', sans-serif;
+	--background-color1: #0F5045;
+	--background-color2: #F0F4F9;
 }
 
+body {
+	font-family: 'Inter', sans-serif;
+}
+
+
+/* -----------------------------------
+   02. Animation CSS
+-------------------------------------*/
+
 [data-animate="fade-up"] {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.65s ease-out, transform 0.65s ease-out;
-  will-change: opacity, transform;
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+	will-change: opacity, transform;
 }
 
 [data-animate="fade-up"].visible {
-  opacity: 1;
-  transform: translateY(0);
+	opacity: 1;
+	transform: translateY(0);
 }
 
-/* animation css  */
+.zoom-container {
+	opacity: 0;
+	transform: scale(0.75) translateY(20px);
+	transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.8s ease-out;
+	will-change: transform, opacity;
+}
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.zoom-active {
+	opacity: 1;
+	transform: scale(1) translateY(0);
+	transition-delay: 0.2s;
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.8s ease forwards;
+	animation: fadeIn 0.8s ease forwards;
 }
 
 
-/* Header CSS  */
+/* Keyframes animation css  */
 
-.menu_desktop li a 
-{
-    font-size: 18px;
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 
-/* Footer cSS  */
-
-footer h2 
-{
-    color: #55DD06 !important;
-    font-size: 22px !important;
-}
-
-.footer_top_section 
-{
-    padding-bottom: 60px;
-}
-.footer_btm 
-{
-    background-color: #070707 !important;
-}
-.social_media img 
-{
-    height: 24px
-}
+/* -----------------------------------
+   03. Header CSS
+-------------------------------------*/
 
 
-/* Hero banner section  */
-
-
-.hero_section{
-    background-size: contain;
+.menu_desktop li a {
+	font-size: 18px;
 }
 
-.hero_section h1 
-{
-    font-size: 52px;
-    line-height: 66px;
+/* -----------------------------------
+   04. Footer CSS
+-------------------------------------*/
+
+
+footer h2 {
+	color: #55DD06 !important;
+	font-size: 22px !important;
 }
-.hero_section h1 span 
-{
-    /* color: #55DD06; */
+
+.footer_top_section {
+	padding-bottom: 60px;
 }
-.request_demo_btn 
-{
-    background-color: #007B37 !important;
-    border: 1px solid #00FF88;
+
+.footer_btm {
+	background-color: #070707 !important;
 }
-.request_demo_btn:hover{
-    background-color: #007b37b9 !important;
+
+.social_media img {
+	height: 24px
 }
 
 
+/* -----------------------------------
+   05. Hero banner section CSS
+-------------------------------------*/
 
-/* logo slider CSS  */
+.hero_section {
+	background-size: contain;
+}
+
+.hero_section h1 {
+	font-size: 52px;
+	line-height: 66px;
+}
+
+.hero_section h1 span {
+	/* color: #55DD06; */
+}
+
+.request_demo_btn {
+	background-color: var(--primary-color) !important;
+	border: 1px solid var(--secondary-color);
+}
+
+.request_demo_btn:hover {
+	background-color: #007b37b9 !important;
+}
+
+
+/* -----------------------------------
+   06. logo slider CSS
+-------------------------------------*/
 
 .slider {
-  overflow: hidden;
-  position: relative;
+	overflow: hidden;
+	position: relative;
 }
 
 .slide-track-left {
-  display: flex;
-  width: max-content;
-  animation: scrollLeft 20s linear infinite;
+	display: flex;
+	width: max-content;
+	animation: scrollLeft 20s linear infinite;
 }
 
 .slide-track-right {
-  display: flex;
-  width: max-content;
-  animation: scrollRight 20s linear infinite;
+	display: flex;
+	width: max-content;
+	animation: scrollRight 20s linear infinite;
 }
 
 /* Animations */
 @keyframes scrollLeft {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
-  }
+	from {
+		transform: translateX(-50%);
+	}
+
+	to {
+		transform: translateX(0);
+	}
 }
 
 @keyframes scrollRight {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(-50%);
+	}
 }
 
 .slider:hover .slide-track-left,
 .slider:hover .slide-track-right {
-  animation-play-state: paused;
+	animation-play-state: paused;
 }
 
 
+/* -----------------------------------
+   07. problem fix section CSS
+-------------------------------------*/
 
-/* problem fix section  */
 
-.problem_wefix_sec 
-{
-    background-image: linear-gradient(to bottom, #B7E4C7, #FFFFFF);
+.problem_wefix_sec {
+	background-image: linear-gradient(to bottom, #B7E4C7, #FFFFFF);
 }
+
 .flip-card {
-          perspective: 1000px;
-          cursor: pointer;
-        }
-
-        .flip-card-inner {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          text-align: left;
-          transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-          transform-style: preserve-3d;
-        }
-
-        .flip-card:hover .flip-card-inner {
-          transform: rotateY(180deg);
-        }
-
-        .flip-card-front, .flip-card-back {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-          display: flex;
-          align-items: center;
-        }
-
-        .flip-card-back {
-          transform: rotateY(180deg);
-        }
-
-
-/* UOM Flow section  */
-        
-.uom_flow_section 
-{
-    background-color: #0F5045;
-    color: white;
-}
-.uom_flow_section h2 
-{
-    color: #07F170;
-    font-size: 50px;
-    line-height: 62px;
-    font-weight: 700;
-}
-.uom_flow_section .flow_cards h3
-{
-  font-size: 26px;
-  
-}
-.uom_flow_section .flow_cards p 
-{
-    font-size: 15px;
+	perspective: 1000px;
+	cursor: pointer;
 }
 
-
-/* mobile flow section  */
-
-.bmobile_flow_sec h2 
-{
-  font-size: 36px;
-  line-height: 44px;
-  font-weight: 500;
+.flip-card-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	text-align: left;
+	transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+	transform-style: preserve-3d;
 }
+
+.flip-card:hover .flip-card-inner {
+	transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	display: flex;
+	align-items: center;
+}
+
+.flip-card-back {
+	transform: rotateY(180deg);
+}
+
+/* -----------------------------------
+   08. UOM Flow section CSS
+-------------------------------------*/
+
+.uom_flow_section {
+	background-color: var(--color-green-dark);
+	color: white;
+}
+
+.uom_flow_section h2 {
+	color: var(--color-mild-green);
+	font-size: 50px;
+	line-height: 62px;
+	font-weight: 700;
+}
+
+.uom_flow_section .flow_cards article {
+	border-right: 3px solid var(--color-green-dark);
+	border-bottom: 3px solid var(--color-green-dark);
+}
+
+.uom_flow_section .flow_cards article:nth-child(3n) {
+	border-right: none;
+}
+
+.uom_flow_section .flow_cards article:nth-last-child(-n+3) {
+	border-bottom: none;
+}
+
+.uom_flow_section .flow_cards h3 {
+	font-size: 26px;
+
+}
+
+.uom_flow_section .flow_cards p {
+	font-size: 15px;
+}
+
+
+/* -----------------------------------
+   09. Bmobile flow section CSS
+-------------------------------------*/
+
+.bmobile_flow_sec h2 {
+	font-size: 36px;
+	line-height: 44px;
+	font-weight: 500;
+}
+
 .bmobile_flow_sec p.sub_title {
-  font-weight: 500 !important;
+	font-weight: 500 !important;
 }
 
-.bmobile_flow_sec span 
-{
-  font-weight: 400 !important;
-}
-
-
-.day_one_benefits_sec 
-{
-  background-image: linear-gradient(to bottom, #C3EAFF, #FFFFFF);
+.bmobile_flow_sec span {
+	font-weight: 400 !important;
 }
 
 
+/* -----------------------------------
+   10. Dayone benefits section CSS
+-------------------------------------*/
 
-/* Media Querries 960px Maxwidth */
-
-@media screen and (max-width:960px) {
-    .bmobile_flow_sec h2 {
-      font-size: 25px;
-      line-height: 32px;
-    }
+.day_one_benefits_sec {
+	background-image: linear-gradient(to bottom, #C3EAFF, #FFFFFF);
 }
 
 
-/* Media Querries 768px Maxwidth */
+/* -----------------------------------
+   11. Media Querries 960px Maxwidth CSS
+-------------------------------------*/
 
 
 @media screen and (max-width:960px) {
-    .bmobile_flow_sec h2 {
-      font-size: 18px;
-      line-height: 28px;
-    }
-    .bmobile_flow_sec p.sub_title {
-        font-size: 14px !important;
-    }
+	.bmobile_flow_sec h2 {
+		font-size: 25px;
+		line-height: 32px;
+	}
+}
+
+
+/* -----------------------------------
+   12. Media Querries 768px Maxwidth CSS
+-------------------------------------*/
+
+ 
+@media screen and (max-width:768px) {
+	.bmobile_flow_sec h2 {
+		font-size: 18px;
+		line-height: 28px;
+	}
+
+	.bmobile_flow_sec p.sub_title {
+		font-size: 14px !important;
+	}
 
 }
+

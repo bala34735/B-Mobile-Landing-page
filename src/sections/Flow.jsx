@@ -8,11 +8,7 @@ import receivingIcon from "../assets/images/receiving.webp";
 import pickIcon from "../assets/images/pick_planner.webp";
 import packIcon from "../assets/images/pack_planner.webp";
 import deliveryIcon from "../assets/images/delivery.webp";
-import FeatureGrid from './Setup';
 
-/**
- * SEO-friendly data structure for the flow steps.
- */
 const flowSteps = [
   { 
     title: "Presale", 
@@ -49,9 +45,29 @@ const flowSteps = [
 const UOMFlowSection = () => {
   return (
     <section className="uom_flow_section relative py-24 px-6 md:px-12 lg:px-20 bg-[#112F2F] font-sans flex items-center">
+      <style>{`
+        /* Custom smooth transitions using scale for hardware acceleration */
+        .smooth-shrink {
+          transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+          transform-origin: left center;
+        }
+        
+        .group:hover .smooth-shrink {
+          transform: scale(0.9); /* Shrinks both title and text smoothly */
+        }
+
+        .icon-zoom {
+          transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+          z-index: 10;
+        }
+
+        .group:hover .icon-zoom {
+          transform: scale(1.8); /* Massive zoom to fill approx 3/4 of the card space */
+        }
+      `}</style>
+
       <div className="max-w-6xl mx-auto w-full relative z-10 flex flex-col items-center">
         
-        {/* --- Header Section --- */}
         <div className="text-center mb-16 relative z-10">
           <h2 data-animate="fade-up" className="text-4xl md:text-5xl font-bold text-[#2ECC71] tracking-tight leading-tight">
             The bMobile way: UOM that runs<br className="hidden md:block"/> through the whole flow
@@ -61,49 +77,45 @@ const UOMFlowSection = () => {
           </p>
         </div>
 
-        {/* --- Main Flow Image --- */}
         <img
           src={bMobileFlow}
           alt="bMobile UOM Flow Diagram"
           className="w-full max-w-4xl object-contain relative z-10 mb-20"
         />
 
-        {/* --- Detailed Flow Grid --- */}
-        <div className="flow_cards grid grid-cols-1 md:grid-cols-3 border border-[#0F5045s]/30 rounded-2xl overflow-hidden bg-[#DDFFF8] relative z-10">
+        <div className="flow_cards grid grid-cols-1 md:grid-cols-3 border border-[#0F5045]/30 rounded-2xl overflow-hidden bg-[#DDFFF8] relative z-10">
           {flowSteps.map((step, index) => (
             <article 
               key={index} 
-              className={`p-8 border-[#0F5045]10 
+              className={`group p-8 border-[#0F5045]/10 
                 ${index < 3 ? 'md:border-b' : ''} 
                 ${index % 3 !== 2 ? 'md:border-r' : ''}
-                hover:bg-white/50 transition-colors duration-300`}
+                hover:bg-white transition-all duration-700 ease-in-out cursor-default relative overflow-hidden`}
             >
-              {/* Updated Icon Container for Images */}
-              <div className="w-14 h-14 flex items-center justify-center pb-2">
+              {/* Icon Container - Zooms to 3/4 size */}
+              <div className="icon-zoom w-14 h-14 flex items-center justify-center mb-6">
                 <img 
                   src={step.icon} 
                   alt={`${step.title} icon`} 
                   className="w-full h-full object-contain"
                 />
               </div>
-              <h3 className="text-2xl font-medium text-[#112F2F] mb-4">
+
+              {/* Title with Smooth Shrink */}
+              <h3 className="smooth-shrink text-2xl font-bold text-[#112F2F] mb-2">
                 {step.title}
               </h3>
-              <p className="text-[#112F2F]/80 leading-relaxed text-sm md:text-base">
+
+              {/* Paragraph with Smooth Shrink */}
+              <p className="smooth-shrink text-[#112F2F]/80 leading-relaxed text-sm md:text-base">
                 {step.desc}
               </p>
             </article>
           ))}
         </div>
-
       </div>
     </section>
-
-
-
   );
 };
-
-<FeatureGrid />
 
 export default UOMFlowSection;

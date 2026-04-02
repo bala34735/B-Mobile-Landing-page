@@ -40,12 +40,12 @@ const BmobileFlowLoop = () => {
       indicator.setAttribute("transform", `translate(${point.x}, ${point.y}) rotate(${angle})`);
 
       setActiveZooms({
-        warehouse: (progress > 0.04 && progress < 0.08),
-        inventory: (progress > 0.20 && progress < 0.24),
-        orders:    (progress > 0.36 && progress < 0.40), 
-        route:     (progress > 0.52 && progress < 0.56),
-        billing:   (progress > 0.68 && progress < 0.72),
-        customer:  (progress > 0.84 && progress < 0.88), 
+        warehouse: (progress > 0.04 && progress < 0.10),
+        inventory: (progress > 0.20 && progress < 0.26),
+        orders:    (progress > 0.36 && progress < 0.42), 
+        route:     (progress > 0.52 && progress < 0.58),
+        billing:   (progress > 0.68 && progress < 0.74),
+        customer:  (progress > 0.84 && progress < 0.90), 
       });
 
       animationId = requestAnimationFrame(animate);
