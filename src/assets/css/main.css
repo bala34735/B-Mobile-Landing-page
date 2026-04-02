@@ -327,7 +327,7 @@ footer h2 {
    12. Media Querries 768px Maxwidth CSS
 -------------------------------------*/
 
- 
+
 @media screen and (max-width:768px) {
 	.bmobile_flow_sec h2 {
 		font-size: 18px;
@@ -338,5 +338,4 @@ footer h2 {
 		font-size: 14px !important;
 	}
 
-}
-
+}  

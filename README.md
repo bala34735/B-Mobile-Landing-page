@@ -7,5 +7,3 @@
 A landing page built with React.js and Tailwind CSS.
 
 Fully responsible to any screen sizes.
-
-https://tailwind-landing-page-danielkim2711.vercel.app
