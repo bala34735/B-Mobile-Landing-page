@@ -1,5 +1,8 @@
-import React from 'react';
-import bMobileFlow from "../assets/images/b_mobile_flow.webp";
+import React, { useEffect, useRef } from 'react';
+import Lottie from "lottie-react";
+
+// Import your Lottie JSON file
+import bMobileFlowAnimation from "../assets/js/bmobile-way.json";
 
 // --- 1. IMPORT YOUR LOCAL IMAGES HERE ---
 import presaleIcon from "../assets/images/pre_sale.webp";
@@ -43,17 +46,46 @@ const flowSteps = [
 ];
 
 const UOMFlowSection = () => {
+  const lottieRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Reset to first frame and play once
+            if (lottieRef.current) {
+              lottieRef.current.goToAndPlay(0, true);
+            }
+          }
+        });
+      },
+      { threshold: 0.2 } // Triggers when 20% of the section is visible
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, []);
+
   return (
-    <section className="uom_flow_section relative py-24 px-6 md:px-12 lg:px-20 bg-[#112F2F] font-sans flex items-center">
+    <section 
+      ref={sectionRef}
+      className="uom_flow_section relative py-24 px-6 md:px-12 lg:px-20 bg-[#112F2F] font-sans flex items-center"
+    >
       <style>{`
-        /* Custom smooth transitions using scale for hardware acceleration */
         .smooth-shrink {
           transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
           transform-origin: left center;
         }
         
         .group:hover .smooth-shrink {
-          transform: scale(0.9); /* Shrinks both title and text smoothly */
+          transform: scale(0.9);
         }
 
         .icon-zoom {
@@ -62,7 +94,7 @@ const UOMFlowSection = () => {
         }
 
         .group:hover .icon-zoom {
-          transform: scale(1.8); /* Massive zoom to fill approx 3/4 of the card space */
+          transform: scale(1.8);
         }
       `}</style>
 
@@ -77,11 +109,16 @@ const UOMFlowSection = () => {
           </p>
         </div>
 
-        <img
-          src={bMobileFlow}
-          alt="bMobile UOM Flow Diagram"
-          className="w-full max-w-4xl object-contain relative z-10 mb-20"
-        />
+        {/* Animation Container */}
+        <div className="w-full max-w-4xl relative z-10 mb-20">
+          <Lottie 
+            lottieRef={lottieRef}
+            animationData={bMobileFlowAnimation} 
+            loop={false} 
+            autoplay={false}
+            className="w-full h-auto"
+          />
+        </div>
 
         <div className="flow_cards grid grid-cols-1 md:grid-cols-3 border border-[#0F5045]/30 rounded-2xl overflow-hidden bg-[#DDFFF8] relative z-10">
           {flowSteps.map((step, index) => (
@@ -92,7 +129,6 @@ const UOMFlowSection = () => {
                 ${index % 3 !== 2 ? 'md:border-r' : ''}
                 hover:bg-white transition-all duration-700 ease-in-out cursor-default relative overflow-hidden`}
             >
-              {/* Icon Container - Zooms to 3/4 size */}
               <div className="icon-zoom w-14 h-14 flex items-center justify-center mb-6">
                 <img 
                   src={step.icon} 
@@ -101,12 +137,10 @@ const UOMFlowSection = () => {
                 />
               </div>
 
-              {/* Title with Smooth Shrink */}
               <h3 className="smooth-shrink text-2xl font-bold text-[#112F2F] mb-2">
                 {step.title}
               </h3>
 
-              {/* Paragraph with Smooth Shrink */}
               <p className="smooth-shrink text-[#112F2F]/80 leading-relaxed text-sm md:text-base">
                 {step.desc}
               </p>

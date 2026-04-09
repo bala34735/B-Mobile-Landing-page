@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
+import Lottie from "lottie-react";
 
-import AnimatedNetworkSection from './MultiuomTracking';
-import AnimatedNetworkImg from "../assets/images/animated_network.webp";
+// Import your Lottie JSON file
+import multiUomAnimation from "../assets/js/multi-uom-tracking.json";
+
 import problem1Front from "../assets/images/problem_fix_01.webp";
 import problem2Front from "../assets/images/problem_fix_02.webp";
 import problem3Front from "../assets/images/problem_fix_03.webp";
@@ -31,43 +33,50 @@ const problemCards = [
 ];
 
 const ProblemFixerSection = () => {
-  const imgRef = useRef(null);
+  const lottieContainerRef = useRef(null);
+  const lottieRef = useRef(null); // Ref to control the Lottie instance
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Triggers zoom-in
+            // 1. Add the CSS zoom class
             entry.target.classList.add('zoom-active');
+            
+            // 2. Reset and play the Lottie animation from the start
+            if (lottieRef.current) {
+              lottieRef.current.goToAndPlay(0, true);
+            }
           } else {
-            // Resets the state so it can animate again when scrolling back
             entry.target.classList.remove('zoom-active');
           }
         });
       },
       { 
-        threshold: 0.15, // Trigger when 15% of the element is visible
-        rootMargin: "0px 0px -50px 0px" // Slight offset for better timing
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
       }
     );
 
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
+    if (lottieContainerRef.current) {
+      observer.observe(lottieContainerRef.current);
     }
 
     return () => {
-      if (imgRef.current) observer.unobserve(imgRef.current);
+      if (lottieContainerRef.current) observer.unobserve(lottieContainerRef.current);
     };
   }, []);
 
   return (
-    <section className="problem_wefix_sec py-16 px-6 md:px-12 bg-white overflow-hidden">
+    /* Removed overflow-hidden to ensure drop-shadows aren't clipped at the section edges */
+    <section className="problem_wefix_sec py-16 px-6 md:px-12 bg-white relative">
       <div className="max-w-5xl mx-auto">
         <h2 data-animate="fade-up" className="text-2xl md:text-4xl font-bold text-[#112F2F] text-center mb-12">
           The problem we fix
         </h2>
 
+        {/* Problem Cards Grid - Preserved Exactly */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {problemCards.map((card, index) => (
             <div key={index} className="flip-card w-full aspect-[16/6]">
@@ -96,13 +105,21 @@ const ProblemFixerSection = () => {
           </p>
         </div>
 
-        {/* This container will now zoom in EVERY time it enters the screen */}
-        <div ref={imgRef} className="zoom-container flex justify-center">
-          <img         
-            src={AnimatedNetworkImg}
-            alt="Multi-UOM Tracking Network Diagram"
-            className="w-full max-w-4xl h-auto object-contain drop-shadow-xl"
-            loading="lazy"
+        {/* Lottie Animation Container Updates:
+            1. Added 'overflow-visible' and 'p-12' so the shadow has space to bleed out.
+            2. Added 'style={{ overflow: "visible" }}' to the Lottie component itself.
+        */}
+        <div 
+          ref={lottieContainerRef} 
+          className="zoom-container flex justify-center w-full max-w-4xl mx-auto overflow-visible p-12"
+        >
+          <Lottie 
+            lottieRef={lottieRef} 
+            animationData={multiUomAnimation} 
+            loop={false} 
+            autoplay={false} 
+            style={{ overflow: 'visible' }}
+            className="w-full h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
           />
         </div>
       </div>

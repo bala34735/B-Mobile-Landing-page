@@ -16,7 +16,6 @@ const BmobileFlowLoop = () => {
     route: false, billing: false, customer: false
   });
 
-  // Pill shape path definition
   const pathData = "M 250,100 L 750,100 A 150,150 0 0 1 750,400 L 250,400 A 150,150 0 0 1 250,100 Z";
 
   useEffect(() => {
@@ -27,7 +26,7 @@ const BmobileFlowLoop = () => {
     const length = path.getTotalLength();
     let animationId;
     let progress = 0;
-    const speed = 0.0008; 
+    const speed = 0.0010; 
 
     const animate = () => {
       progress += speed;

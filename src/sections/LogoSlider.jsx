@@ -11,26 +11,13 @@ import sinalloaLogo from "../assets/images/sinalloa_logo.webp";
 import tacsWorksLogo from "../assets/images/tacs_works_logo.webp";
 import kurzLogo from "../assets/images/kurz_logo.webp";
 
-const row1Logos = [
-  millCreekLogo,
-  oldViennaLogo,
-  rodriguezLogo,
-  gabrielsBakeryLogo,
-  glacierLogo,
-];
-
-const row2Logos = [
-  lemateLogo,
-  yoloIceLogo,
-  sinalloaLogo,
-  tacsWorksLogo,
-  kurzLogo,
-];
+const row1Logos = [millCreekLogo, oldViennaLogo, rodriguezLogo, gabrielsBakeryLogo, glacierLogo];
+const row2Logos = [lemateLogo, yoloIceLogo, sinalloaLogo, tacsWorksLogo, kurzLogo];
 
 const LogoSlider = () => {
   return (
-    <section className="bg-gray-100 py-16 overflow-hidden" aria-label="Customer Logos">
-      <div className="text-center mb-12 px-4">
+    <section className="bg-gray-100 py-20 overflow-hidden w-full" aria-label="Customer Logos">
+      <div className="text-center mb-16 px-4">
         <h2 data-animate="fade-up" className="text-2xl md:text-3xl font-bold text-gray-800">
           The Operators who live on the route choose bmobile
         </h2>
@@ -39,35 +26,37 @@ const LogoSlider = () => {
         </p>
       </div>
 
-      {/* Main Container with Gradient Mask */}
-      <div className="relative mx-auto max-w-7xl space-y-4 px-4 [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+      {/* space-y-16 increases the height between the two rows */}
+      <div className="relative w-full space-y-16 [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
         
-        {/* Row 1: Left to Right Animation */}
-        <div className="flex overflow-hidden group py-10"> 
-          <div className="flex animate-loop-scroll-left hover:[animation-play-state:paused] gap-12 items-center">
-            {/* Double the logos to ensure a seamless loop */}
-            {[...row1Logos, ...row1Logos, ...row1Logos].map((logo, index) => (
-              <img
-                key={`row1-${index}`}
-                src={logo}
-                alt="client logo"
-                className="h-14 w-auto object-contain transition-transform duration-500 hover:scale-150 cursor-pointer flex-shrink-0"
-              />
+        {/* Row 1: Left to Right */}
+        <div className="flex overflow-visible group"> 
+          {/* gap-16 is a "little bit" more than your original gap-12. 
+              py-8 ensures the logo has room to scale up without cutting off. */}
+          <div className="flex animate-loop-scroll-left hover:[animation-play-state:paused] gap-16 items-center whitespace-nowrap py-2 overflow-visible">
+            {[...row1Logos, ...row1Logos, ...row1Logos, ...row1Logos].map((logo, index) => (
+              <div key={`row1-${index}`} className="flex-shrink-0 overflow-visible">
+                <img
+                  src={logo}
+                  alt="client logo"
+                  className="h-14 w-auto object-contain transition-transform duration-500 hover:scale-125 cursor-pointer"
+                />
+              </div>
             ))}
           </div>
         </div>
 
-        {/* Row 2: Right to Left Animation */}
-        <div className="flex overflow-hidden group py-10">
-          <div className="flex animate-loop-scroll-right hover:[animation-play-state:paused] gap-12 items-center">
-            {/* Double the logos to ensure a seamless loop */}
-            {[...row2Logos, ...row2Logos, ...row2Logos].map((logo, index) => (
-              <img
-                key={`row2-${index}`}
-                src={logo}
-                alt="client logo"
-                className="h-14 w-auto object-contain transition-transform duration-500 hover:scale-150 cursor-pointer flex-shrink-0"
-              />
+        {/* Row 2: Right to Left */}
+        <div className="flex overflow-visible group">
+          <div className="flex animate-loop-scroll-right hover:[animation-play-state:paused] gap-16 items-center whitespace-nowrap py-2 overflow-visible">
+            {[...row2Logos, ...row2Logos, ...row2Logos, ...row2Logos].map((logo, index) => (
+              <div key={`row2-${index}`} className="flex-shrink-0 overflow-visible">
+                <img
+                  src={logo}
+                  alt="client logo"
+                  className="h-14 w-auto object-contain transition-transform duration-500 hover:scale-125 cursor-pointer"
+                />
+              </div>
             ))}
           </div>
         </div>
@@ -75,18 +64,18 @@ const LogoSlider = () => {
 
       <style jsx>{`
         @keyframes loop-scroll-left {
-          from { transform: translateX(-50%); }
-          to { transform: translateX(0); }
-        }
-        @keyframes loop-scroll-right {
           from { transform: translateX(0); }
           to { transform: translateX(-50%); }
         }
+        @keyframes loop-scroll-right {
+          from { transform: translateX(-50%); }
+          to { transform: translateX(0); }
+        }
         .animate-loop-scroll-left {
-          animation: loop-scroll-left 40s linear infinite;
+          animation: loop-scroll-left 45s linear infinite;
         }
         .animate-loop-scroll-right {
-          animation: loop-scroll-right 40s linear infinite;
+          animation: loop-scroll-right 45s linear infinite;
         }
       `}</style>
     </section>
