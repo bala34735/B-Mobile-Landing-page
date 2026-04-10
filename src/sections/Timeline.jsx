@@ -35,7 +35,7 @@ const WhereitGoesWrong = () => {
 
       <div className="max-w-6xl mx-auto">
         <header className="text-center mb-16">
-          <h2 data-animate="fade-up" className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+          <h2 data-animate="fade-up" className="text-3xl md:text-4xl font-semibold text-gray-900 mb-2">  
             Where it goes wrong in real life
           </h2>
           <p className="text-gray-600 text-lg">Item: Sparkling Tea 500 ml</p>

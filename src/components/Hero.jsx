@@ -78,12 +78,10 @@ const Hero = () => {
         
         <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-6 animate-fadeIn">
           <span className="glow-gradient-text inline-block">
-            Inventory that speaks
-          </span>{" "}
-          your units at every stage
+            Inventory that speaks </span> your units at every stage
         </h1>
 
-        <p className="text-gray-200 text-lg md:text-xl pt-2 mb-6 animate-fadeIn delay-300">
+        <p className="text-gray-200 sub_title text-lg md:text-xl pt-2 mb-6 animate-fadeIn delay-300">
           When units are clear, mistakes drop, cycle counts shrink,
           <br className="hidden md:block" />
           and profit improves.

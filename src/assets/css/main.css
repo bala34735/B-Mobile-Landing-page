@@ -20,6 +20,7 @@
 10. Dayone benefits section CSS
 11. Media Querries 960px Maxwidth CSS
 12. Media Querries 768px Maxwidth CSS
+13. Media Querries 680px Maxwidth CSS
 
 --------------------------------------------------------*/
 
@@ -41,10 +42,54 @@
 }
 
 body {
-	font-family: 'Inter', sans-serif;
+	font-family: 'Inter', sans-serif !important;
 }
 
+h1 
+{
+	font-size: 52px !important;
+}
 
+h2 
+{
+	font-size: 36px !important;
+	font-family: 'Inter', sans-serif !important;
+}
+h2.sec_title 
+{
+    font-size: 50px !important;
+}
+
+h3 
+{
+	font-size: 24px !important;
+}
+  
+h4 
+{
+	font-size: 18px;
+}
+
+h5 
+{
+   font-size: 16px;
+}
+
+p {
+	font-size: 16px !important;
+}
+
+p.sub_title 
+{
+    font-size: 20px !important;
+}
+
+.section_spacing_py 
+{
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+	
 /* -----------------------------------
    02. Animation CSS
 -------------------------------------*/
@@ -337,5 +382,47 @@ footer h2 {
 	.bmobile_flow_sec p.sub_title {
 		font-size: 14px !important;
 	}
+	.uom_flow_section .flow_cards article:nth-last-child(-n+3) {
+	  border-bottom: 3px solid var(--color-green-dark);
+	}
+	.uom_flow_section .flow_cards article {
+	  border-right: 0px solid var(--color-green-dark) !important;
+    }
+	.uom_flow_section .flow_cards article:last-child {
+	  border-bottom: 0px solid var(--color-green-dark) !important;
+	} 
 
 }  
+
+
+
+/* -----------------------------------
+   13. Media Querries 680px Maxwidth CSS
+-------------------------------------*/
+
+@media screen and (max-width:680px) {
+	h1 {
+		font-size: 38px !important;
+		line-height: 48px !important;
+    }
+    h2 {
+      font-size: 26px !important;
+	}
+
+	h2.sec_title {
+		font-size: 32px !important;
+		line-height: 42px !important;
+	}
+
+	p.sub_title {
+		font-size: 18px !important;
+	}
+	h2.flow_title {
+		font-size: 14px !important;
+		line-height: 14px !important;
+	}
+	p.flow_sub_title
+	{
+		font-size: 12px !important;
+	}
+}

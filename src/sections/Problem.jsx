@@ -111,7 +111,7 @@ const ProblemFixerSection = () => {
         */}
         <div 
           ref={lottieContainerRef} 
-          className="zoom-container flex justify-center w-full max-w-4xl mx-auto overflow-visible p-12"
+          className="zoom-container flex justify-center w-full max-w-4xl mx-auto overflow-visible p-0 md:p-12"
         >
           <Lottie 
             lottieRef={lottieRef} 

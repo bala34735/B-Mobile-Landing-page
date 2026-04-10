@@ -93,10 +93,10 @@ const BmobileFlowLoop = () => {
         </svg>
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 pointer-events-none px-4">
-          <h2 data-animate="fade-up" className="md:text-5xl font-black text-[#112F2F] mb-1 md:mb-4">
+          <h2 data-animate="fade-up" className="flow_title md:text-5xl font-black text-[#112F2F] mb-1 md:mb-4">
             How Work Flows Through <br className="hidden md:block"/> bMobile
           </h2>
-          <p className="md:text-xl sub_title">
+          <p className="flow_sub_title md:text-xl sub_title">
             Every step updates the next
           </p>
         </div>

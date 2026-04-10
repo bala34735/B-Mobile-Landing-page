@@ -78,13 +78,12 @@ const SetitUp = () => {
         }
       `}</style>
       
-      <h2 className="text-3xl md:text-5xl font-semibold text-[#112F2F] text-center mb-16 tracking-tight">
+      <h2 className="text-3xl md:text-5xl font-semibold text-[#112F2F] text-center mb-16">
         How you set it up once per item
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mx-auto">
         
-        {/* Card 1 */}
         <div className="stagger-card card-container bg-[#9AD3FD] rounded-3xl overflow-hidden flex flex-col shadow-sm">
           <div className="p-8">
             <h3 className="text-2xl font-bold text-[#112F2F] mb-2">Purchase UOM</h3>
@@ -95,7 +94,6 @@ const SetitUp = () => {
           </div>
         </div>
 
-        {/* Card 2 */}
         <div className="stagger-card card-container bg-[#E1DFFA] rounded-3xl overflow-hidden flex flex-col shadow-sm">
           <div className="p-8">
             <h3 className="text-2xl font-bold text-[#112F2F] mb-2">Stock UOM</h3>
@@ -106,7 +104,6 @@ const SetitUp = () => {
           </div>
         </div>
 
-        {/* Card 3 */}
         <div className="stagger-card card-container bg-[#128BE1] rounded-3xl overflow-hidden flex flex-col shadow-sm">
           <div className="p-8">
             <h3 className="text-2xl font-bold text-white mb-2">Sell UOM</h3>

@@ -101,10 +101,10 @@ const UOMFlowSection = () => {
       <div className="max-w-6xl mx-auto w-full relative z-10 flex flex-col items-center">
         
         <div className="text-center mb-16 relative z-10">
-          <h2 data-animate="fade-up" className="text-4xl md:text-5xl font-bold text-[#2ECC71] tracking-tight leading-tight">
+          <h2 data-animate="fade-up" className="sec_title text-4xl md:text-5xl font-bold text-[#2ECC71] tracking-tight leading-tight">
             The bMobile way: UOM that runs<br className="hidden md:block"/> through the whole flow
           </h2>
-          <p className="mt-5 text-xl text-white font-medium max-w-2xl mx-auto leading-normal">
+          <p className="sub_title mt-5 text-xl text-white font-medium max-w-2xl mx-auto leading-normal">
             Plain promise: bMobile converts Units of Measure automatically at every step
           </p>
         </div>
